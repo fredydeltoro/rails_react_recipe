@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This a little application to create recipes, using RoR, but instead of use the views of Rails
+it uses React as view.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 2.7.0
 
-* System dependencies
+* Rails version 6.0.3.2
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* React 16.13.1
