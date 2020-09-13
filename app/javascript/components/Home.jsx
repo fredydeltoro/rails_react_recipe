@@ -9,7 +9,7 @@ export default () => (
         <p className="lead">
           A curated list of recipes for the best homemade meal and delicacies.
         </p>
-        <hr className="my-4 text-white" style={{ borderTop: '1px solid '}} />
+        <hr className="my-4" style={{ borderTop: '1px solid white'}} />
         <Link
           to="/recipes"
           className="btn btn-lg custom-button"
