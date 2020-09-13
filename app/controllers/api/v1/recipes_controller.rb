@@ -5,20 +5,20 @@ class Api::V1::RecipesController < ApplicationController
   end
 
   def create
-    recipe = Recipe.create!(recipe_params)
-    if recipe
-      render json: recipe
+    @recipe = Recipe.new(recipe_params)
+    if @recipe.save
+      render json: { id: @recipe.id }
     else
-      render json: recipe.errors
+      render json: @recipe.errors
     end
   end
 
   def show
-    if recipe
+    if recipe['error']
+      render json: recipe, status: :not_found
+    else
       render json: recipe
     end
-  rescue ActiveRecord::RecordNotFound => e
-    render json: { error: e.to_s }, status: :not_found
   end
 
   def destroy
@@ -29,12 +29,12 @@ class Api::V1::RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.permit(:name, :image, :ingredients, :instruction)
+    params.require(:recipe).permit(:name, :image, :ingredients, :instruction)
   end
 
   def recipe
     @recipe ||= Recipe.find(params[:id])
-    puts 'que traes ?????', @recipe
-    return @recipe
+    rescue ActiveRecord::RecordNotFound => e
+      { error: e.to_s }
   end
 end
